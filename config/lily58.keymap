@@ -4,10 +4,14 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/pointing.h>
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 
 / {
     keymap {
@@ -21,10 +25,10 @@
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
 //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
             bindings = <
-&kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5    &kp Y                   &kp N6 &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE    &kp Y
-&kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T     &kp Y                   &kp Y  &kp U    &kp I     &kp O   &kp P    &kp MINUS    &kp Y
-&kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G     &kp Y                   &kp H  &kp J    &kp K     &kp L   &kp SEMI &kp SQT      &kp Y
-                 &kp X  &kp C    &kp V    &kp B     &kp Y                   &kp N  &kp M    &kp COMMA &kp DOT &kp Y 
+&kp Y   &kp Y  &kp Y  &kp Y    &kp Y    &kp Y     &kp Y                   &kp Y  &kp Y    &kp Y     &kp Y   &kp Y    &kp Y    &kp Y
+&kp Y   &kp Y  &kp W  &kp E    &kp R    &kp Y     &kp Y                   &kp Y  &kp U    &kp I     &kp O   &kp P    &kp Y    &kp Y
+&kp Y   &kp Y  &kp S  &kp D    &kp F    &kp Y     &kp Y                   &kp H  &kp J    &kp K     &kp L   &kp Y    &kp Y    &kp Y
+               &kp X  &kp Y    &kp V    &kp Y     &kp Y                   &kp N  &kp M    &kp Y     &kp Y   &kp Y 
 &kp Y     &kp Y  &kp Y  &kp Y                                                                         &kp Y   &kp Y    &kp Y        &kp Y
                  &kp Y  &kp Y    &kp Y    &kp Y     &kp Y                   &kp Y  &kp Y    &kp Y     &kp Y   &kp Y
             >;
@@ -40,10 +44,10 @@
 // |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
 //                     |      |      |      |        |  |       |      |       |       |
             bindings = <
-&kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5    &kp Y                   &kp N6 &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE    &kp Y
-&kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T     &kp Y                   &kp Y  &kp U    &kp I     &kp O   &kp P    &kp MINUS    &kp Y
-&kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G     &kp Y                   &kp H  &kp J    &kp K     &kp L   &kp SEMI &kp SQT      &kp Y
-                 &kp X  &kp C    &kp V    &kp B     &kp Y                   &kp N  &kp M    &kp COMMA &kp DOT &kp Y 
+&kp Y   &kp Y  &kp Y  &kp Y    &kp Y    &kp Y     &kp Y                   &kp Y  &kp Y    &kp Y     &kp Y   &kp Y    &kp Y    &kp Y
+&kp Y   &kp Y  &kp W  &kp E    &kp R    &kp Y     &kp Y                   &kp Y  &kp U    &kp I     &kp O   &kp P    &kp Y    &kp Y
+&kp Y   &kp Y  &kp S  &kp D    &kp F    &kp Y     &kp Y                   &kp H  &kp J    &kp K     &kp L   &kp Y    &kp Y    &kp Y
+               &kp X  &kp Y    &kp V    &kp Y     &kp Y                   &kp N  &kp M    &kp Y     &kp Y   &kp Y 
 &kp Y     &kp Y  &kp Y  &kp Y                                                                         &kp Y   &kp Y    &kp Y        &kp Y
                  &kp Y  &kp Y    &kp Y    &kp Y     &kp Y                   &kp Y  &kp Y    &kp Y     &kp Y   &kp Y
             >;
@@ -59,10 +63,10 @@
 // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
 //                     |      |      |      |        |  |       |      |       |       |
             bindings = <
-&kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5    &kp Y                   &kp N6 &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE    &kp Y
-&kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T     &kp Y                   &kp Y  &kp U    &kp I     &kp O   &kp P    &kp MINUS    &kp Y
-&kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G     &kp Y                   &kp H  &kp J    &kp K     &kp L   &kp SEMI &kp SQT      &kp Y
-                 &kp X  &kp C    &kp V    &kp B     &kp Y                   &kp N  &kp M    &kp COMMA &kp DOT &kp Y 
+&kp Y   &kp Y  &kp Y  &kp Y    &kp Y    &kp Y     &kp Y                   &kp Y  &kp Y    &kp Y     &kp Y   &kp Y    &kp Y    &kp Y
+&kp Y   &kp Y  &kp W  &kp E    &kp R    &kp Y     &kp Y                   &kp Y  &kp U    &kp I     &kp O   &kp P    &kp Y    &kp Y
+&kp Y   &kp Y  &kp S  &kp D    &kp F    &kp Y     &kp Y                   &kp H  &kp J    &kp K     &kp L   &kp Y    &kp Y    &kp Y
+               &kp X  &kp Y    &kp V    &kp Y     &kp Y                   &kp N  &kp M    &kp Y     &kp Y   &kp Y 
 &kp Y     &kp Y  &kp Y  &kp Y                                                                         &kp Y   &kp Y    &kp Y        &kp Y
                  &kp Y  &kp Y    &kp Y    &kp Y     &kp Y                   &kp Y  &kp Y    &kp Y     &kp Y   &kp Y
             >;
